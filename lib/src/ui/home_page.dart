@@ -18,16 +18,16 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: Color(0xFFcf2d13),
       ),
       bottomNavigationBar: CurvedNavigationBar(
-        color: Colors.white,
-        backgroundColor: Color(0xFFcf2d13),
-        buttonBackgroundColor: Colors.white,
+        color: Color(0xFFcf2d13),
+        backgroundColor: Colors.grey[200],
+        buttonBackgroundColor:Color(0xFFcf2d13),
         height: 50,
         items: <Widget>[
-          Icon(Icons.verified_user, size: 20, color: Colors.black),
-          Icon(Icons.calendar_today, size: 20, color: Colors.black),
-          Icon(Icons.power_input, size: 20, color: Colors.black),
-          Icon(Icons.local_shipping, size: 20, color: Colors.black),
-          Icon(Icons.lock, size: 20, color: Colors.black),
+          Icon(Icons.verified_user, size: 20, color: Colors.grey[200]),
+          Icon(Icons.calendar_today, size: 20, color: Colors.grey[200]),
+          Icon(Icons.power_input, size: 20, color: Colors.grey[200]),
+          Icon(Icons.local_shipping, size: 20, color: Colors.grey[200]),
+          Icon(Icons.lock, size: 20, color: Colors.grey[200]),
         ],
         animationDuration: Duration(milliseconds: 200),
         animationCurve: Curves.bounceIn,
@@ -38,7 +38,7 @@ class _HomePageState extends State<HomePage> {
         },
       ),
       body: Container(
-          color: Color(0xFFcf2d13),
+          color: Colors.grey[200],
           child: Center(
             child: Container(
               width: MediaQuery.of(context).size.width / 1.2,
@@ -56,7 +56,7 @@ class _HomePageState extends State<HomePage> {
                       Container(
                         height: 130,
                         width: 350,
-                        color: Color(0xFFcf2d13),
+                        color: Colors.grey[200],
                         child: Padding(
                           padding: EdgeInsets.only(bottom: 35, left: 20),
                           child: Center(
@@ -64,7 +64,7 @@ class _HomePageState extends State<HomePage> {
                               "Doador(a)",
                               style: TextStyle(
                                   fontSize: 30,
-                                  color: Colors.white,
+                                  color: Colors.black45,
                                   fontWeight: FontWeight.w900),
                             ),
                           ),
@@ -86,7 +86,7 @@ class _HomePageState extends State<HomePage> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          Padding(padding: EdgeInsets.only(top: 80),
+                          Padding(padding: EdgeInsets.only(top: 10),
                         child: Text("Vencimento", style: TextStyle(fontSize: 25, color: Colors.grey),))
 
                         ],
@@ -111,9 +111,9 @@ class _HomePageState extends State<HomePage> {
                           height: 110,
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
-                            color: Colors.black,
-                            /*image: DecorationImage(
-                              image: AssetImage("assets/DoarLogo.png")) */
+                           
+                            image: DecorationImage(
+                              image: AssetImage("assets/DoarLogo.png")) 
                           ),               
                           ),
                         ),
