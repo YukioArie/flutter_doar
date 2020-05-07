@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'home_page.dart';
+
 class RegisterPage extends StatefulWidget {
   @override
   _RegisterPageState createState() => _RegisterPageState();
@@ -50,7 +52,10 @@ class _RegisterPageState extends State<RegisterPage> {
                height: 45,
                child: RaisedButton(
                  color: Colors.white,
-                 onPressed: (){},
+                 onPressed: (){
+                   Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => HomePage()));
+                 },
                  child: Text("Cadastrar", style: TextStyle( fontSize: 20),),
                  ),
              ),),           
