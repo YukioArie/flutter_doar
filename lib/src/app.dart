@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_doar/src/ui/home_page.dart';
 import 'package:flutter_doar/src/ui/loading_page.dart';
 import 'package:flutter_doar/src/ui/login_page.dart';
+import 'package:flutter_doar/src/ui/rank_body_page.dart';
+import 'package:flutter_doar/src/ui/rank_users_page.dart';
 import 'package:flutter_doar/src/ui/register_page.dart';
 
 class App extends StatelessWidget {
@@ -13,7 +15,7 @@ class App extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: HomePage(),
+      home: LoginPage(),
     );
   }
 }
