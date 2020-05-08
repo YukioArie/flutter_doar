@@ -1,21 +1,58 @@
 import 'package:flutter/material.dart';
 
 class RankCard extends StatelessWidget {
-  final String nomeUsuario;
-  final int pontos;
-  final int posicao;
-  final String img;
+  final String userName;
+  final int pointsRank;
+  final int positionRank;
+  final String profilePicture;
 
   RankCard({
-    @required this.img,
-    @required this.nomeUsuario,
-    @required this.pontos,
-    @required this.posicao,
+    @required this.profilePicture,
+    @required this.userName,
+    @required this.pointsRank,
+    @required this.positionRank,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Card(
+    return Row(
+      children: <Widget>[
+        Padding(
+          padding: EdgeInsets.only(left: 10, right: 10),
+          child: Text(positionRank.toString(), style: TextStyle(fontSize: 25)),
+        ),
+        Container(
+          padding: EdgeInsets.only(),
+          width: MediaQuery.of(context).size.width / 1.17,
+          height: MediaQuery.of(context).size.height / 10.0,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.all(
+                Radius.circular(60),
+              ),
+              color: Color(0xFFd94738)),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              ClipRRect(
+                borderRadius: BorderRadius.circular(100),
+                child: Image.network(profilePicture),
+              ),
+              Padding(
+                padding: EdgeInsets.only(left: 10, right: 10),
+                child: Text(userName,
+                    style: TextStyle(fontSize: 18, color: Colors.black)),
+              ),
+              Text(pointsRank.toString(),
+                        style: TextStyle(fontSize: 25, color: Colors.black)),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+/*Card(
       child: Padding(
         padding: EdgeInsets.all(10),
         child: Row(
@@ -39,6 +76,4 @@ class RankCard extends StatelessWidget {
           ],
         ),
       ),
-    );
-  }
-}
+    );*/

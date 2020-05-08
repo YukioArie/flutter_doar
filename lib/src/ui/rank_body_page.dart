@@ -35,7 +35,7 @@ class _RankBodyPageState extends State<RankBodyPage> {
       ),
       bottomNavigationBar: CurvedNavigationBar(
         color: Color(0xFFcf2d13),
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.grey[200],
         buttonBackgroundColor:Color(0xFFcf2d13),
         height: 50,
         items: <Widget>[

@@ -8,128 +8,119 @@ class RankCompaniesPage extends StatefulWidget {
 }
 
 class _RankCompaniesPageState extends State<RankCompaniesPage> {
-  var rank = [];
+  var users = [];
   @override
   void initState() {
     super.initState();
-    Dio().get('http://www.mocky.io/v2/5eb3c3dd3200007c477b8ad4').then((resposta) {
+    Dio()
+        .get('http://www.mocky.io/v2/5eb51d5e0e0000330b081f94')
+        .then((resposta) {
       setState(() {
-        rank = resposta.data;
+        users = resposta.data;
       });
     });
   }
-  Widget build(BuildContext context) {
 
-    
+  Widget build(BuildContext context) {
     return Column(
-        children: <Widget>[
-          Container(
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.width / 1.9,
-              color: Colors.grey[200],
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Row(
-                    children: <Widget>[
-                      Column(
-                        children: <Widget>[
-                          Padding(
-                            padding: EdgeInsets.only(
-                              top: 30,
-                              bottom: 10,
-                              right: 20,
-                            ),
-                            child: Text(
-                              "2 Lugar",
-                              style: TextStyle(fontSize: 25.0),
-                            ),
-                          ),
-                          GestureDetector(
-                            child: Container(
-                              width: 100,
-                              height: 100,
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                
-                                image: DecorationImage(
-                              image: AssetImage("assets/DoarLogo.png")) 
-                              ),
-                            ),
-                          ),
-                          // Padding(padding: EdgeInsets.only(top:5), child: Text("sadassssd", style: TextStyle(fontSize: 15.0),),),
-                        ],
+      children: <Widget>[
+        Container(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height / 3.0,
+          color: Colors.grey[200],
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Container(
+                padding: EdgeInsets.only(
+                  
+                  top: 60,
+                ),
+                child: Column(
+                  children: <Widget>[
+                    Text(
+                      "2 Lugar",
+                      style: TextStyle(fontSize: 25.0),
+                    ),
+                    Container(
+                      padding: EdgeInsets.only(top: 5),
+                      width: 100,
+                      height: 100,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(100),
+                        child: Image.asset("assets/DoarLogo.png"),
                       ),
-                    ],
-                  ),
-                  Row(
-                    children: <Widget>[
-                      Column(
-                        children: <Widget>[
-                          Padding(
-                            padding:
-                                EdgeInsets.only(top: 10, bottom: 10, right: 20),
-                            child: Text(
-                              "1 Lugar",
-                              style: TextStyle(fontSize: 25.0),
-                            ),
-                          ),
-                          GestureDetector(
-                            child: Container(
-                              width: 100,
-                              height: 100,
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                
-                                image: DecorationImage(
-                              image: AssetImage("assets/DoarLogo.png")) 
-                              ),
-                            ),
-                          ),
-                          //Padding(padding: EdgeInsets.only(top:5), child: Text("sadassssd", style: TextStyle(fontSize: 15.0)),),
-                        ],
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: <Widget>[
-                      Column(
-                        children: <Widget>[
-                          Padding(
-                            padding:
-                                EdgeInsets.only(top: 30, bottom: 10, right: 20),
-                            child: Text(
-                              "3 Lugar",
-                              style: TextStyle(fontSize: 25.0),
-                            ),
-                          ),
-                          GestureDetector(
-                            child: Container(
-                              width: 100,
-                              height: 100,
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                               
-                                image: DecorationImage(
-                              image: AssetImage("assets/DoarLogo.png")) 
-                              ),
-                            ),
-                          ),
-                          //Padding(padding: EdgeInsets.only(top:5), child: Text("Maria Eduarda da silva", style: TextStyle(fontSize: 15.0),),),
-                        ],
-                      ),
-                    ],
-                  )
-                ],
-              )),
-          Expanded(
-            child: ListView(
-              children: rank.map((ranking) {
-                return RankCard(img: ranking['img'] ,nomeUsuario: ranking['nomeUsuario'], pontos: ranking['pontos'], posicao: ranking['posicao'],);
-              }).toList(),
-            ),
+                    )
+                  ],
+                ),
               ),
-        ],
+              Container(
+                padding: EdgeInsets.only(top: 10),
+                child: Column(
+                  children: <Widget>[
+                    Text(
+                      "1 Lugar",
+                      style: TextStyle(fontSize: 25.0),
+                    ),
+                    Container(
+                      padding: EdgeInsets.only(top: 5),
+                      width: 100,
+                      height: 100,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(100),
+                        child: Image.asset("assets/DoarLogo.png"),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.only(
+                
+                  top: 60,
+                ),
+                child: Column(
+                  children: <Widget>[
+                    Text(
+                      "2 Lugar",
+                      style: TextStyle(fontSize: 25.0),
+                    ),
+                    Container(
+                      padding: EdgeInsets.only(top: 5),
+                      width: 100,
+                      height: 100,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(100),
+                        child: Image.asset("assets/DoarLogo.png"),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+        
+        Expanded(
+            child: Container(
+          decoration: BoxDecoration(color: Colors.grey[200]),
+          padding: EdgeInsets.only(bottom: 2),
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.width,
+          child: ListView(
+            children: users.map((ranking) {
+              return Padding(
+                  padding: EdgeInsets.all(3),
+                  child: RankCard(
+                      profilePicture: ranking['profilePicture'],
+                      userName: ranking['userName'],
+                      pointsRank: ranking['pointsRank'],
+                      positionRank: ranking['positionRank']));
+            }).toList(),
+          ),
+        ))
+      ],
     );
   }
 }
+
