@@ -1,9 +1,12 @@
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_doar/src/ui/home_page.dart';
 import 'package:flutter_doar/src/ui/login_page.dart';
 import 'package:flutter_doar/src/ui/rank_companies_page.dart';
 import 'package:flutter_doar/src/ui/rank_users_page.dart';
+import 'package:flutter_icons/flutter_icons.dart';
+
+import 'card_profile.dart';
+import 'hospital_location_page.dart';
 
 class RankBodyPage extends StatefulWidget {
   @override
@@ -12,6 +15,8 @@ class RankBodyPage extends StatefulWidget {
 
 class _RankBodyPageState extends State<RankBodyPage> {
   var _current = 2;
+  var _currentPages = 1;
+
   final List<Widget> pages = [
       RankUsersPage(),
       RankCompaniesPage(),
@@ -33,27 +38,7 @@ class _RankBodyPageState extends State<RankBodyPage> {
           Tab(text: "Empresas")
         ]),
       ),
-      bottomNavigationBar: CurvedNavigationBar(
-        color: Color(0xFFcf2d13),
-        backgroundColor: Colors.grey[200],
-        buttonBackgroundColor:Color(0xFFcf2d13),
-        height: 50,
-        items: <Widget>[
-          Icon(Icons.verified_user, size: 20, color: Colors.grey[200]),
-          Icon(Icons.calendar_today, size: 20, color: Colors.grey[200]),
-          Icon(Icons.power_input, size: 20, color: Colors.grey[200]),
-          Icon(Icons.local_shipping, size: 20, color: Colors.grey[200]),
-          Icon(Icons.lock, size: 20, color: Colors.grey[200]),
-        ],
-        animationDuration: Duration(milliseconds: 200),
-        animationCurve: Curves.bounceIn,
-        onTap: (index) {
-          setState(() {
-            _current = index;
-          });
-        },
-      ),
-      
+    
       body:TabBarView(
           children: pages,
             
