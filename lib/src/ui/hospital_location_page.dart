@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_doar/src/ui/drawer_widget.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class HospitalLocationPage extends StatefulWidget {
@@ -31,10 +32,11 @@ class _HospitalLocationPageState extends State<HospitalLocationPage> {
 
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Color(0xFFcf2d13),
         title: Text("Hemocentros"),
         centerTitle: true,
       ),
-      drawer: Drawer(),
+      drawer: DrawerWidget(),
       body: GoogleMap(
           onMapCreated: _onMapCreated,
           initialCameraPosition: CameraPosition(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_doar/src/ui/drawer_widget.dart';
 import 'package:flutter_doar/src/ui/home_page.dart';
 import 'package:flutter_doar/src/ui/login_page.dart';
 import 'package:flutter_doar/src/ui/rank_companies_page.dart';
@@ -28,7 +29,7 @@ class _RankBodyPageState extends State<RankBodyPage> {
     return DefaultTabController(
       length: pages.length, 
       child: Scaffold(
-      drawer: Drawer(),
+      drawer: DrawerWidget(),
       appBar: AppBar(
         centerTitle: true,
         title: Text("Rank Doadores"),

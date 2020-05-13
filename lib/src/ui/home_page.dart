@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_doar/src/ui/card_profile.dart';
+import 'package:flutter_doar/src/ui/drawer_widget.dart';
 import 'package:flutter_doar/src/ui/hospital_location_page.dart';
 import 'package:flutter_doar/src/ui/rank_body_page.dart';
 import 'package:flutter_icons/flutter_icons.dart';
@@ -22,7 +23,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: pages[_currentPages],
-      drawer: Drawer(),
+      drawer: DrawerWidget(),
       bottomNavigationBar: BottomNavigationBar(  
       items: [
         BottomNavigationBarItem(
