@@ -14,9 +14,21 @@ class _HospitalLocationPageState extends State<HospitalLocationPage> {
   void _onMapCreated(GoogleMapController controller) {
     mapController = controller;
   }
+  
 
   @override
   Widget build(BuildContext context) {
+    final Marker marker = Marker(markerId: MarkerId("123456"),
+    position: LatLng(-21.7438157,-41.3336036),
+    infoWindow: InfoWindow(
+      title:"Hemocentro"
+    ),
+
+    );
+    setState(() {
+      markers.add(marker);
+    });
+
     return Scaffold(
       appBar: AppBar(
         title: Text("Hemocentros"),
@@ -27,8 +39,10 @@ class _HospitalLocationPageState extends State<HospitalLocationPage> {
           onMapCreated: _onMapCreated,
           initialCameraPosition: CameraPosition(
             target: LatLng(lat, lng),
-            zoom: 14.0,         
+            zoom: 14.0,
+            
           ),
+          markers: markers,
         ),
     );
   }
