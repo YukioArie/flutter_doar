@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "332580398606",
+    "firebase_url": "https://doar-2d9fb.firebaseio.com",
+    "project_id": "doar-2d9fb",
+    "storage_bucket": "doar-2d9fb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:332580398606:android:414449b36ca7a001947e5f",
+        "android_client_info": {
+          "package_name": "com.example.flutter_doar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "332580398606-65ju2bvr2bqbnp1fe1hhs6pi25ujgooo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.flutter_doar",
+            "certificate_hash": "24d723d3023f754d8770764573eeb10ec3885ec0"
+          }
+        },
+        {
+          "client_id": "332580398606-n4l9ik5ckujctagtc3eu798cbt2tllq6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAL6H_ZTjl8uBbYkRxCWrAotRMvOuTZK4k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "332580398606-n4l9ik5ckujctagtc3eu798cbt2tllq6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

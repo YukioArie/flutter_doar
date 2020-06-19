@@ -14,3 +14,5 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+sha1 = 24:D7:23:D3:02:3F:75:4D:87:70:76:45:73:EE:B1:0E:C3:88:5E:C0

@@ -13,12 +13,15 @@ class _LoginPageState extends State<LoginPage> {
   bool lembrar = false;
   TextEditingController emailController = TextEditingController();
   TextEditingController senhaController = TextEditingController();
-  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final _formKey = GlobalKey<FormState>();
+  var _email = '';
+  var _senha = '';
 
   Widget _lblPassword() {
     return Theme(
       data: ThemeData(primaryColor: Colors.black45),
       child: TextFormField(
+        onSaved: (value) => _senha = value,
         validator: (value) {
           if (value.isEmpty) {
             return "Insira senha!";
@@ -53,6 +56,7 @@ class _LoginPageState extends State<LoginPage> {
             return "Insira email!";
           }
         },
+        onSaved: (value) => _email = value,
         controller: emailController,
         keyboardType: TextInputType.emailAddress,
         style: TextStyle(color: Colors.black45, fontFamily: 'OpenSans'),
@@ -210,6 +214,11 @@ class _LoginPageState extends State<LoginPage> {
         ),
       ),
     ));
+  }
+  _entrar(){
+    _formKey.currentState.save();
+    print(_email);
+    print(_senha);
   }
 }
 
