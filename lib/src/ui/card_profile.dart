@@ -6,14 +6,11 @@ class CardProfile extends StatefulWidget {
 }
 
 class _CardProfileState extends State<CardProfile> {
-  var _current = 2;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: Drawer(),
       appBar: AppBar(
-        centerTitle: true,
-        title: Text("Cartão Doador"),
+        title: Text(" Doar", style: TextStyle(fontFamily: "BDP Birgula", fontSize: 40,),),
         backgroundColor: Color(0xFFcf2d13),
       ),
       body: Container(
