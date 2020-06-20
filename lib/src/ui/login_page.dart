@@ -26,6 +26,7 @@ class _LoginPageState extends State<LoginPage> {
           if (value.isEmpty) {
             return "Insira senha!";
           }
+          return null;
         },
         controller: senhaController,
         obscureText: true,
@@ -55,6 +56,7 @@ class _LoginPageState extends State<LoginPage> {
           if (value.isEmpty) {
             return "Insira email!";
           }
+          return null;
         },
         onSaved: (value) => _email = value,
         controller: emailController,
@@ -128,6 +130,7 @@ class _LoginPageState extends State<LoginPage> {
             return Navigator.pushReplacement(
                 context, MaterialPageRoute(builder: (context) => MainPage()));
           }
+          return null;
         },
         color: Colors.white,
         elevation: 5.0,

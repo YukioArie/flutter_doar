@@ -16,6 +16,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
           if (value.isEmpty) {
             return "Insira email!";
           }
+          return null;
         },
         controller: emailController,
         keyboardType: TextInputType.emailAddress,
@@ -45,6 +46,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
           if (_formKey.currentState.validate()) {
             return Navigator.pop(context);
           }
+          return null;
         },
         color: Colors.white,
         elevation: 5.0,

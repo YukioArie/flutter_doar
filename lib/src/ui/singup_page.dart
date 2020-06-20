@@ -19,6 +19,7 @@ class _SingupPageState extends State<SingupPage> {
           if (value.isEmpty) {
             return "Insere nome de usuário!";
           }
+          return null;
         },
         controller: usernameController,
         keyboardType: TextInputType.emailAddress,
@@ -47,6 +48,7 @@ class _SingupPageState extends State<SingupPage> {
           if (value.isEmpty) {
             return "Insere senha!";
           }
+          return null;
         },
         controller: textoController,
         obscureText: true,
@@ -76,6 +78,7 @@ class _SingupPageState extends State<SingupPage> {
           if (value.isEmpty) {
             return "Insere email!";
           }
+          return null;
         },
         controller: emailController,
         keyboardType: TextInputType.emailAddress,
@@ -105,6 +108,7 @@ class _SingupPageState extends State<SingupPage> {
           if (_formKey.currentState.validate()) {
             return Navigator.pop(context);
           }
+          return null;
         },
         color: Colors.white,
         elevation: 5.0,
