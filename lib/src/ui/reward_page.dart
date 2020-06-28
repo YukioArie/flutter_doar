@@ -33,8 +33,8 @@ class _RewardPageState extends State<RewardPage> {
              
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
-                Empresas(),
-                Empresas(),
+                _empresas(),
+                _empresas(),
                 
               ],
             ),
@@ -46,7 +46,7 @@ class _RewardPageState extends State<RewardPage> {
   }
 }
 
-Widget Empresas() {
+Widget _empresas() {
   return Container(
     width: 150,
     height: 148,

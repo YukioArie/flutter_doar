@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class CardProfile extends StatefulWidget {
+class CardProfilePage extends StatefulWidget {
   @override
   _CardProfileState createState() => _CardProfileState();
 }
 
-class _CardProfileState extends State<CardProfile> {
+class _CardProfileState extends State<CardProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

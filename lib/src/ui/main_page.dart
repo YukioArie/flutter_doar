@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_doar/src/ui/card_profile.dart';
+import 'package:flutter_doar/src/ui/card_profile_page.dart';
 import 'package:flutter_doar/src/ui/historic_donations_page.dart';
 import 'package:flutter_doar/src/ui/hospital_page.dart';
 import 'package:flutter_doar/src/ui/profile_page.dart';
@@ -11,10 +11,10 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
+  bool _goToCardProfilePage = true;
   int _currentPages = 1;
   final List<Widget> _pages = [
     HospitalPage(),
-    CardProfile(),
    HistoricDonationsPage(),
   ];
   @override
@@ -23,7 +23,7 @@ class _MainPageState extends State<MainPage> {
       floatingActionButton: FloatingActionButton(
           onPressed: () {
             setState(() {
-              _currentPages = 1;
+              _goToCardProfilePage = true;
             });
           },
           child: Icon(FontAwesome.address_card),),
@@ -33,10 +33,13 @@ class _MainPageState extends State<MainPage> {
         shape: CircularNotchedRectangle(),
         color: Colors.white,
         child: BottomNavigationBar(
+          unselectedItemColor: Colors.grey,
+          selectedItemColor: _goToCardProfilePage == false ? Colors.red : Colors.grey,
           currentIndex: _currentPages,
           onTap: (index) {
             setState(() {
               _currentPages = index;
+              _goToCardProfilePage = false;
             });
           },
           elevation: 0,
@@ -53,7 +56,7 @@ class _MainPageState extends State<MainPage> {
           ],
         ),
       ),
-      body: _pages[_currentPages],
+      body: _goToCardProfilePage == true ? CardProfilePage() :  _pages[_currentPages],
     );
   }
 }
