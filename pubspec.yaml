@@ -34,6 +34,7 @@ dependencies:
   flare_flutter: ^2.0.3
   flutter_icons: ^1.1.0
   google_maps_flutter: ^0.5.25+1
+  url_launcher: ^5.4.11
 
 
 
@@ -59,7 +60,10 @@ flutter:
   #  - images/a_dot_burr.jpeg
   #  - images/a_dot_ham.jpeg
   assets:
-    - assets/
+    - assets/DoarLogo.png
+    - assets/StatusBolsaDeSangue.flr
+    - assets/LogoLoading.flr
+    - assets/StatusBolsaDeSangueSemLogo.flr
   fonts:
       - family: BDP Birgula
         fonts:
