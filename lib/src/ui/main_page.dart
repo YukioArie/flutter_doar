@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_doar/src/ui/card_profile_page.dart';
-import 'package:flutter_doar/src/ui/historic_donations_page.dart';
+import 'package:flutter_doar/src/ui/carteirinha_page.dart';
 import 'package:flutter_doar/src/ui/hospital_page.dart';
 import 'package:flutter_doar/src/ui/profile_page.dart';
 import 'package:flutter_icons/flutter_icons.dart';
@@ -11,22 +10,23 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  bool _goToCardProfilePage = true;
   int _currentPages = 1;
   final List<Widget> _pages = [
     HospitalPage(),
-   HistoricDonationsPage(),
+    CarteirinhaPage(),
+    ProfilePage(),
   ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            setState(() {
-              _goToCardProfilePage = true;
-            });
-          },
-          child: Icon(FontAwesome.address_card),),
+        onPressed: () {
+          setState(() {
+            _currentPages = 1;
+          });
+        },
+        child: Icon(FontAwesome.address_card),
+      ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
         notchMargin: 5,
@@ -34,29 +34,46 @@ class _MainPageState extends State<MainPage> {
         color: Colors.white,
         child: BottomNavigationBar(
           unselectedItemColor: Colors.grey,
-          selectedItemColor: _goToCardProfilePage == false ? Colors.red : Colors.grey,
           currentIndex: _currentPages,
           onTap: (index) {
             setState(() {
               _currentPages = index;
-              _goToCardProfilePage = false;
             });
           },
           elevation: 0,
           backgroundColor: Colors.transparent,
           items: [
             BottomNavigationBarItem(
-              icon: Icon(FontAwesome.hospital_o),
-              title: Text("Hemocentros"),
+              icon: Padding(
+                padding: EdgeInsets.only(left: 10),
+                child: Icon(FontAwesome.hospital_o),
+              ),
+              title: Padding(
+                padding: EdgeInsets.only(left: 10),
+                child: Text("Hemocentros"),
+              ),
             ),
             BottomNavigationBarItem(
-              icon: Icon(FontAwesome.user_circle),
-              title: Text("Minha conta"),
+              icon: Icon(FontAwesome.hospital_o, color: Colors.transparent),
+              title: Text(
+                "",
+                style: TextStyle(color: Colors.transparent),
+              ),
+            ),
+            BottomNavigationBarItem(
+              icon: Padding(
+                padding: EdgeInsets.only(right: 10),
+                child: Icon(FontAwesome.user_circle),
+              ),
+              title: Padding(
+                padding: EdgeInsets.only(right: 10),
+                child: Text("Minha conta"),
+              ),
             ),
           ],
         ),
       ),
-      body: _goToCardProfilePage == true ? CardProfilePage() :  _pages[_currentPages],
+      body: _pages[_currentPages],
     );
   }
 }
