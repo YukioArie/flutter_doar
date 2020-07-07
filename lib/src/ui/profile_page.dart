@@ -1,12 +1,25 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_doar/src/ui/apoiadores_page.dart';
 import 'package:flutter_doar/src/ui/historic_donations_page.dart';
+import 'package:flutter_doar/src/ui/login_page.dart';
 import 'package:flutter_doar/src/ui/rank_body_page.dart';
 import 'package:flutter_doar/src/ui/register_donation_page.dart';
 import 'package:flutter_doar/src/ui/reward_page.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 
-class ProfilePage extends StatelessWidget {
+class ProfilePage extends StatefulWidget {
+  @override
+  _ProfilePageState createState() => _ProfilePageState();
+}
+
+class _ProfilePageState extends State<ProfilePage> {
+  _sair() async {
+    await _auth.signOut();
+    Navigator.of(context)
+        .pushReplacement(MaterialPageRoute(builder: (context) => LoginPage()));
+  }
+
+  final _auth = FirebaseAuth.instance;
   Widget _optionsBtn(
       BuildContext context, String title, Icon iconData, Widget goToPage) {
     return GestureDetector(
@@ -92,13 +105,30 @@ class ProfilePage extends StatelessWidget {
                       Icon(FontAwesome.qrcode), RegisterDonationPage()),
                   _optionsBtn(context, "Recompensas", Icon(FontAwesome.gift),
                       RewardPage()),
-                  _optionsBtn(context, "Apoiadores", Icon(FontAwesome.building),
-                      ApoiadoresPage()),
                   Divider(
                     color: Colors.grey,
                   ),
-                  _optionsBtn(context, "Sair", Icon(FontAwesome.sign_out),
-                      ApoiadoresPage()),
+                  GestureDetector(
+                    onTap: () {
+                      _sair();
+                    },
+                    child: Container(
+                      color: Colors.transparent,
+                      padding: EdgeInsets.all(16),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Text(
+                            "Sair",
+                            style: TextStyle(
+                              fontSize: 15,
+                            ),
+                          ),
+                          Icon(FontAwesome.sign_out),
+                        ],
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),

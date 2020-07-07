@@ -1,4 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_doar/src/ui/main_page.dart';
 
 class SingupPage extends StatefulWidget {
   @override
@@ -11,6 +13,9 @@ class _SingupPageState extends State<SingupPage> {
   TextEditingController senhaController = TextEditingController();
   TextEditingController senhaNovamenteController = TextEditingController();
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  var _email = '';
+  var _senha = '';
+  final _auth = FirebaseAuth.instance;
   Widget _lblUsername() {
     return Theme(
       data: ThemeData(primaryColor: Colors.black45),
@@ -40,7 +45,7 @@ class _SingupPageState extends State<SingupPage> {
     );
   }
 
-  Widget _lblPassword(String lblText, TextEditingController textoController) {
+  Widget _lblPassword() {
     return Theme(
       data: ThemeData(primaryColor: Colors.black45),
       child: TextFormField(
@@ -50,7 +55,8 @@ class _SingupPageState extends State<SingupPage> {
           }
           return null;
         },
-        controller: textoController,
+        onSaved: (value) => _senha = value,
+        controller: senhaController,
         obscureText: true,
         keyboardType: TextInputType.emailAddress,
         style: kHintTextStyle,
@@ -63,7 +69,7 @@ class _SingupPageState extends State<SingupPage> {
             color: Colors.black45,
             size: 22.0,
           ),
-          labelText: lblText,
+          labelText: "Senha",
           labelStyle: TextStyle(color: Colors.black45, fontFamily: 'OpenSans'),
         ),
       ),
@@ -80,6 +86,7 @@ class _SingupPageState extends State<SingupPage> {
           }
           return null;
         },
+        onSaved: (value) => _email = value,
         controller: emailController,
         keyboardType: TextInputType.emailAddress,
         style: kHintTextStyle,
@@ -106,7 +113,7 @@ class _SingupPageState extends State<SingupPage> {
       child: RaisedButton(
         onPressed: () {
           if (_formKey.currentState.validate()) {
-            return Navigator.pop(context);
+            return _entrar();
           }
           return null;
         },
@@ -151,11 +158,11 @@ class _SingupPageState extends State<SingupPage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                   Container(
-                height: 130,
-                width: 130,
-                child: Image.asset("assets/DoarLogo.png"),
-              ),
+                  Container(
+                    height: 130,
+                    width: 130,
+                    child: Image.asset("assets/DoarLogo.png"),
+                  ),
                   SizedBox(
                     height: 30.0,
                   ),
@@ -163,9 +170,7 @@ class _SingupPageState extends State<SingupPage> {
                   SizedBox(height: 20.0),
                   _lblEmail(),
                   SizedBox(height: 20.0),
-                  _lblPassword("Senha", senhaController),
-                  SizedBox(height: 20.0),
-                  _lblPassword("Senha novamente", senhaNovamenteController),
+                  _lblPassword(),
                   SizedBox(height: 10.0),
                   _lblLogin(),
                 ],
@@ -173,6 +178,22 @@ class _SingupPageState extends State<SingupPage> {
             ),
           ),
         ));
+  }
+
+  _entrar() async {
+    _formKey.currentState.save();
+    try {
+      await _auth.createUserWithEmailAndPassword(
+          email: _email, password: _senha);
+      Navigator.of(context).pushReplacement(MaterialPageRoute(
+        builder: (context) => MainPage(),
+      ));
+    } catch (e) {
+      print(e);
+    }
+
+    print(_email);
+    print(_senha);
   }
 }
 

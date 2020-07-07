@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_doar/src/ui/singup_page.dart';
 
@@ -14,6 +15,8 @@ class _LoginPageState extends State<LoginPage> {
   TextEditingController emailController = TextEditingController();
   TextEditingController senhaController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+  final _auth = FirebaseAuth.instance;
+
   var _email = '';
   var _senha = '';
 
@@ -127,8 +130,7 @@ class _LoginPageState extends State<LoginPage> {
       child: RaisedButton(
         onPressed: () {
           if (_formKey.currentState.validate()) {
-            return Navigator.pushReplacement(
-                context, MaterialPageRoute(builder: (context) => MainPage()));
+            return _entrar();
           }
           return null;
         },
@@ -154,7 +156,7 @@ class _LoginPageState extends State<LoginPage> {
 
   Widget _lblSingup() {
     return GestureDetector(
-      onTap: () => Navigator.push(
+      onTap: () => Navigator.pushReplacement(
           context, MaterialPageRoute(builder: (context) => SingupPage())),
       child: RichText(
         text: TextSpan(children: [
@@ -209,7 +211,6 @@ class _LoginPageState extends State<LoginPage> {
                 padding: EdgeInsets.only(top: 15),
               ),
               _lblForgotPassword(),
-              _rememberMeCheckBox(),
               _lblLogin(),
               _lblSingup(),
             ],
@@ -218,15 +219,24 @@ class _LoginPageState extends State<LoginPage> {
       ),
     ));
   }
-  _entrar(){
+
+  _entrar() async {
     _formKey.currentState.save();
+    try {
+      await _auth.signInWithEmailAndPassword(email: _email, password: _senha);
+      Navigator.of(context)
+          .pushReplacement(MaterialPageRoute(builder: (context) => MainPage()));
+    } catch (e) {
+      print(e);
+    }
+
     print(_email);
     print(_senha);
   }
 }
 
 final kHintTextStyle = TextStyle(
-   color: Colors.black45,
+  color: Colors.black45,
   fontFamily: 'OpenSans',
 );
 

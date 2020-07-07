@@ -19,14 +19,13 @@ class _LoadingPageState extends State<LoadingPage> {
 
   _navigate() async {
     final user = await _auth.currentUser();
-    if (user != null){
-       Navigator.of(context)
-        .pushReplacement(MaterialPageRoute(builder: (context) => MainPage()));
-    }else{
-        Navigator.of(context)
-        .pushReplacement(MaterialPageRoute(builder: (context) => LoginPage()));
+    if (user != null) {
+      Navigator.of(context)
+          .pushReplacement(MaterialPageRoute(builder: (context) => MainPage()));
+    } else {
+      Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (context) => LoginPage()));
     }
-   
   }
 
   @override
