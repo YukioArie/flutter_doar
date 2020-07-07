@@ -61,14 +61,16 @@ class HospitalCards extends StatelessWidget {
               FlatButton(
                   onPressed: () {
                     showModalBottomSheet(
+                        isScrollControlled: true,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(30.0),
                           topRight: Radius.circular(30.0),
                         )),
                         context: context,
-                        builder: (context) {
+                        builder: (_) {
                           return Container(
+                            height: MediaQuery.of(context).size.height / 1.2,
                             child: HospitalBottomSheet(snapshot),
                           );
                         });
